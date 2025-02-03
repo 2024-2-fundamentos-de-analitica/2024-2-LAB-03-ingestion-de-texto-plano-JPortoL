@@ -56,9 +56,9 @@ def limpiar_cuerpo(dir):
         else:
             palabras += " " + re.sub(r'\s{2,}', ' ', linea.strip()).replace('%', '').replace('.', '')
 
-    # if fila_actual:
-    #     fila_actual.append(palabras[1:])
-    #     filas.append(fila_actual)
+    if fila_actual:
+        fila_actual.append(palabras[1:])
+        filas.append(fila_actual)
     # for fila in filas:
     #     print(fila, "\n \n")
 
