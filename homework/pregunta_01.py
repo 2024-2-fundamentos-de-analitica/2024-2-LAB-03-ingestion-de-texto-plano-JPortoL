@@ -44,7 +44,7 @@ def limpiar_cuerpo(dir):
     for linea in lineas[4:]:
         if re.match(r"^\s+\d+", linea):
             if fila_actual:
-                fila_actual.append(palabras[1:])
+                fila_actual.append(palabras[1:-1])
                 filas.append(fila_actual)
             fila_actual = []
             partes = re.split(r'\s+', linea.strip())
@@ -57,7 +57,7 @@ def limpiar_cuerpo(dir):
             palabras += " " + re.sub(r'\s{2,}', ' ', linea.strip()).replace('%', '').replace('.', '')
 
     if fila_actual:
-        fila_actual.append(palabras[1:])
+        fila_actual.append(palabras[1:-1])
         filas.append(fila_actual)
     # for fila in filas:
     #     print(fila, "\n \n")
@@ -84,7 +84,7 @@ def pregunta_01():
     encabezados = limpiar_encabezado('files/input/clusters_report.txt')
     filas = limpiar_cuerpo('files/input/clusters_report.txt')
     df = pd.DataFrame(filas, columns=encabezados)
-    # print(df.principales_palabras_clave.to_list()[1], "\n \n")
+    print(df.principales_palabras_clave.to_list()[0], "\n \n")
     return df
 
 if __name__ == '__main__':
